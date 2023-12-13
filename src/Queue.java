@@ -6,7 +6,7 @@
  **/
 public class Queue {
 
-    //Intance data
+    //Instance data
     private QueueNode bottomValue;
     private int size;
 
@@ -20,26 +20,29 @@ public class Queue {
 
     //add an element
     public <E> void enqueue(E element) {
-        QueueNode newValue = new QueueNode(element, bottomValue);
-        bottomValue = newValue;
-        size++;
+        QueueNode newValue = new QueueNode(element);
+        if (size == 0) {
+            bottomValue = newValue;
+            size ++;
+        } else {
+            bottomValue.setParentNode(newValue);
+            size++;
+        }
+
     }
 
     //remove and return the least recent element
     public <E> E dequeue()  {
-        QueueNode newValue = bottomValue;
-        bottomValue = bottomValue.getParentNode();
-        size = size - 1;
-        return (E) newValue.getParentNode();
+        QueueNode newValue = new QueueNode(bottomValue.getValue());
+
+            bottomValue = bottomValue.getParentNode();
+            size = size -1;
+            return (E) newValue.getValue();
     }
 
 
     public boolean isEmpty() {
-        if (size == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return size == 0;
     }
 
 

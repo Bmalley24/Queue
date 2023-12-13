@@ -6,18 +6,18 @@ public class QueueNode <T, E> {
 
     public QueueNode() {//Empty Consructor
         parentNode = null;
-        value = null;
+        eValue = null;
 
     }
-    public QueueNode(T data){ // 1 input Constructor
-        value = data;
+    public QueueNode(E data){ // 1 input Constructor
+        eValue = data;
         parentNode = null;
 
     }
 
-    public QueueNode(T data, QueueNode node1) { // 2 inputConstructor
+    public QueueNode(E data, QueueNode node1) { // 2 inputConstructor
         parentNode = node1;
-        value = data;
+        eValue = data;
     }
 
 
@@ -26,26 +26,26 @@ public class QueueNode <T, E> {
         return parentNode;
     }
 
-    public T getValue() {
-        return value;
+    public E getValue() {
+        return eValue;
     }
 
     //Mutators
     public void setParentNode(QueueNode newNode){
         parentNode = (newNode);
     }
-    public void setValue(T newValue){
-        value = (newValue);
+    public void setValue(E newValue){
+        eValue = (newValue);
     }
 
     //toString method
     public String toString() {
-        return "Node:" + value;
+        return "Node:" + eValue;
     }
 
     //boolean method
     public boolean booleanEquals(QueueNode a) {
-        if (value.equals(a.getValue())){
+        if (eValue.equals(a.getValue())){
             return true;
         } else{
             return false;
